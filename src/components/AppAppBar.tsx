@@ -1,3 +1,4 @@
+'use client';
 import * as React from 'react';
 import { styled, alpha } from '@mui/material/styles';
 import Box from '@mui/material/Box';
@@ -13,6 +14,16 @@ import MenuIcon from '@mui/icons-material/Menu';
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 import ColorModeIconDropdown from '../theme/ColorModeIconDropdown';
 import Sitemark from '../components/SitemarkIcon';
+
+const navItems = [
+  { label: 'Features', href: '#features' },
+  { label: 'Testimonials', href: '#testimonials' },
+  { label: 'Highlights', href: '#highlights' },
+  { label: 'Pricing', href: '#pricing' },
+  { label: 'FAQ', href: '#faq' },
+  // Placeholder for future content. Adjust href when a blog section exists.
+  { label: 'Blog', href: '#blog' },
+];
 
 const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   display: 'flex',
@@ -53,24 +64,19 @@ export default function AppAppBar() {
           <Box sx={{ flexGrow: 1, display: 'flex', alignItems: 'center', px: 0 }}>
             <Sitemark />
             <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-              <Button variant="text" color="info" size="small">
-                Features
-              </Button>
-              <Button variant="text" color="info" size="small">
-                Testimonials
-              </Button>
-              <Button variant="text" color="info" size="small">
-                Highlights
-              </Button>
-              <Button variant="text" color="info" size="small">
-                Pricing
-              </Button>
-              <Button variant="text" color="info" size="small" sx={{ minWidth: 0 }}>
-                FAQ
-              </Button>
-              <Button variant="text" color="info" size="small" sx={{ minWidth: 0 }}>
-                Blog
-              </Button>
+              {navItems.map((item) => (
+                <Button
+                  key={item.label}
+                  variant="text"
+                  color="info"
+                  size="small"
+                  component="a"
+                  href={item.href}
+                  sx={{ minWidth: item.label.length <= 3 ? 0 : undefined }}
+                >
+                  {item.label}
+                </Button>
+              ))}
             </Box>
           </Box>
           <Box
@@ -115,12 +121,16 @@ export default function AppAppBar() {
                   </IconButton>
                 </Box>
 
-                <MenuItem>Features</MenuItem>
-                <MenuItem>Testimonials</MenuItem>
-                <MenuItem>Highlights</MenuItem>
-                <MenuItem>Pricing</MenuItem>
-                <MenuItem>FAQ</MenuItem>
-                <MenuItem>Blog</MenuItem>
+                {navItems.map((item) => (
+                  <MenuItem
+                    key={item.label}
+                    component="a"
+                    href={item.href}
+                    onClick={toggleDrawer(false)}
+                  >
+                    {item.label}
+                  </MenuItem>
+                ))}
                 <Divider sx={{ my: 3 }} />
                 <MenuItem>
                   <Button color="primary" variant="contained" fullWidth>
