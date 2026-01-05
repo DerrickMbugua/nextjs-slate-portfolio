@@ -4,6 +4,7 @@ import Container from '@mui/material/Container';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import { styled } from '@mui/material/styles';
+import LogoCollection from './LogoCollection';
 
 const StyledBox = styled('div')(({ theme }) => ({
   width: '100%',
@@ -61,7 +62,7 @@ export default function Hero() {
                 textAlign: { xs: 'left', sm: 'left' },
               }}
             >
-              Crafting modern&nbsp;
+              Crafting Modern&nbsp;
               <Typography
                 component="span"
                 variant="h1"
@@ -73,7 +74,7 @@ export default function Hero() {
                   }),
                 })}
               >
-                software experiences
+              Software Solutions
               </Typography>
             </Typography>
             <Typography
@@ -82,10 +83,14 @@ export default function Hero() {
                 color: 'text.secondary',
               }}
             >
-              I&apos;m a software developer focused on building fast, accessible, and
-              visually polished web applications. From landing pages to complex
-              dashboards, I help turn ideas into reliable, production-ready products.
+              We&apos;re a software studio focused on building fast, accessible, and
+              visually polished web applications. From websites to complex applications
+              and chatbots, we help businesses turn ideas into reliable, production-ready
+              products.
             </Typography>
+            <Box sx={{ mt: 1, width: '100%' }}>
+              <LogoCollection />
+            </Box>
           </Stack>
         </Box>
         <Box
