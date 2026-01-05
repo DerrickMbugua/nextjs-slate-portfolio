@@ -9,7 +9,7 @@ import LogoCollection from './LogoCollection';
 const StyledBox = styled('div')(({ theme }) => ({
   width: '100%',
   maxWidth: 520,
-  height: 320,
+  height: 260,
   borderRadius: (theme.vars || theme).shape.borderRadius,
   border: '1px solid',
   borderColor: (theme.vars || theme).palette.grey[200],
@@ -19,7 +19,10 @@ const StyledBox = styled('div')(({ theme }) => ({
   backgroundSize: 'cover',
   backgroundPosition: 'center',
   [theme.breakpoints.up('sm')]: {
-    height: 360,
+    height: 300,
+  },
+  [theme.breakpoints.up('md')]: {
+    height: 340,
   },
   ...theme.applyStyles('dark', {
     boxShadow: '0 18px 60px rgba(0, 0, 0, 0.8)',
@@ -48,17 +51,25 @@ export default function Hero() {
           flexDirection: { xs: 'column', md: 'row' },
           alignItems: 'center',
           justifyContent: 'space-between',
-          gap: { xs: 6, md: 8 },
-          pt: { xs: 14, sm: 20 },
-          pb: { xs: 8, sm: 12 },
+          gap: { xs: 3, sm: 5, md: 8 },
+          px: { xs: 2, sm: 3 },
+          pt: { xs: 8, sm: 14, md: 18 },
+          pb: { xs: 5, sm: 9, md: 11 },
         }}
       >
-        <Box sx={{ flex: 1, maxWidth: { md: '520px' } }}>
+        <Box
+          sx={{
+            flex: 1,
+            maxWidth: { xs: '100%', md: '520px' },
+            width: '100%',
+          }}
+        >
           <Stack spacing={3} useFlexGap sx={{ alignItems: 'flex-start' }}>
             <Typography
               variant="h1"
               sx={{
-                fontSize: 'clamp(2.75rem, 6vw, 3.5rem)',
+                fontSize: { xs: '1.8rem', sm: '2.3rem', md: '3.1rem' },
+                lineHeight: 1.1,
                 textAlign: { xs: 'left', sm: 'left' },
               }}
             >
@@ -81,6 +92,7 @@ export default function Hero() {
               sx={{
                 textAlign: 'left',
                 color: 'text.secondary',
+                fontSize: { xs: '0.95rem', sm: '1rem' },
               }}
             >
               We&apos;re a software studio focused on building fast, accessible, and
@@ -88,7 +100,7 @@ export default function Hero() {
               and chatbots, we help businesses turn ideas into reliable, production-ready
               products.
             </Typography>
-            <Box sx={{ mt: 1, width: '100%' }}>
+            <Box sx={{ mt: { xs: 2, sm: 3 }, width: '100%' }}>
               <LogoCollection />
             </Box>
           </Stack>
@@ -98,6 +110,8 @@ export default function Hero() {
             flex: 1,
             display: 'flex',
             justifyContent: { xs: 'center', md: 'flex-end' },
+            mt: { xs: 4, md: 0 },
+            width: '100%',
           }}
         >
           <StyledBox id="image" />

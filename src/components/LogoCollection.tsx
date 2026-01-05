@@ -19,9 +19,9 @@ const lightModeLogos = [
 ];
 
 const logoStyle = {
-  width: '100px',
-  height: '80px',
-  margin: '0 32px',
+  width: 72,
+  height: 56,
+  margin: '0 16px',
   opacity: 0.7,
 };
 
@@ -41,24 +41,37 @@ export default function LogoCollection() {
   }
 
   return (
-    <Box id="logoCollection" sx={{ py: 4 }}>
+    <Box
+      id="logoCollection"
+      sx={{
+        py: { xs: 1.5, sm: 2 },
+      }}
+    >
       <Typography
         component="p"
         variant="subtitle2"
-        align="center"
-        sx={{ color: 'text.secondary' }}
+        sx={{ color: 'text.secondary', textAlign: 'left', mb: 1 }}
       >
-        Trusted by the best companies
+        Trusted by the best
       </Typography>
-      <Grid container sx={{ justifyContent: 'center', mt: 0.5, opacity: 0.6 }}>
+      <Grid
+        container
+        wrap="wrap"
+        sx={{
+          justifyContent: { xs: 'flex-start', sm: 'flex-start' },
+          mt: 0.5,
+          opacity: 0.6,
+          rowGap: 1.5,
+        }}
+      >
         {logos.map((logo, index) => (
-          <Grid key={index}>
+          <Box key={index} sx={{ display: 'flex', alignItems: 'center' }}>
             <img
               src={logo}
               alt={`Fake company number ${index + 1}`}
               style={logoStyle}
             />
-          </Grid>
+          </Box>
         ))}
       </Grid>
     </Box>
